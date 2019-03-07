@@ -32,6 +32,7 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
     return board;
 }
 
+//the purpose of this function is to return the number of bombs in an adjacent neighbor.
 const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
     const neighborOffsets = [
         [-1, -1],
@@ -58,6 +59,17 @@ const getNumberOfNeighborBombs = (bombBoard, rowIndex, columnIndex) => {
         }
     });
     return numberOfBombs;
+}
+
+const flipTile = (playerBoard, bombBoard, rowIndex, columnIndex) => {
+    if(playerBoard[rowIndex][columnIndex] !== ' '){
+        console.log('This tile has already been turned!');
+        return;
+    } else if(bombBoard[rowIndex][columnIndex] === 'B'){
+        playerBoard[rowIndex][columnIndex] = 'B';
+    } else {
+        playerBoard[rowIndex][columnIndex] = getNumberOfNeighborBombs(bombBoard, rowIndex, columnIndex);
+    }
 }
 
 const printBoard = (board) => {
