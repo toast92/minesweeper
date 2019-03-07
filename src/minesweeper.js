@@ -78,11 +78,15 @@ const printBoard = (board) => {
 }
 
 let playerBoard = generatePlayerBoard(3,4);
-let bombBoard = generateBombBoard(3, 4, 7);
+let bombBoard = generateBombBoard(3, 4, 4);
 console.log('Player board:');
 printBoard(playerBoard);
 console.log('Bomb board:');
 printBoard(bombBoard);
+//--> will flip the tile at the 0,0 location on the board
+flipTile(playerBoard, bombBoard, 1, 1); 
+console.log('Updated player board:');
+printBoard(playerBoard);
 
 
 
